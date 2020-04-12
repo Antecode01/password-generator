@@ -26,45 +26,52 @@ function writePassword() {
 }
 
 function generatePassword() {
-  var numberOfChar = prompt("How many characters would you want?");
-  var uppercaseQUestion = confirm("Do you want uppercase character?s");
-  var lowercaseQUestion = confirm("Do you want lowercase characters?");
-  var numberQUestion = confirm("Do you want numbers?");
-  var specialQUestion = confirm("Do you want special characters");
+  var numberOfChar = prompt(
+    "How many characters would you want? Please choose between 8 and 128"
+  );
+  if (numberOfChar < 8 || numberOfChar > 128) {
+    alert("please choose between 8 and 128");
+  } else {
+    var uppercaseQUestion = confirm("Do you want uppercase character?s");
+    var lowercaseQUestion = confirm("Do you want lowercase characters?");
+    var numberQUestion = confirm("Do you want numbers?");
+    var specialQUestion = confirm("Do you want special characters");
 
-  var uppercase = "QWERTYUIOPLKJHGFDSAZXCVBNM";
-  var lowercase = "qwertyuioplkjhgfdsazxcvbnm";
-  var numbers = "1234567890";
-  var specialChar = "!@#$%^&*()";
+    var uppercase = "QWERTYUIOPLKJHGFDSAZXCVBNM";
+    var lowercase = "qwertyuioplkjhgfdsazxcvbnm";
+    var numbers = "1234567890";
+    var specialChar = "!@#$%^&*()";
 
-  var selectedChars = [];
-  if (uppercaseQUestion === true) {
-    for (var i = 0; i < uppercase.length; i++) {
-      selectedChars.push(uppercase[i]);
+    var selectedChars = [];
+    if (uppercaseQUestion === true) {
+      for (var i = 0; i < uppercase.length; i++) {
+        selectedChars.push(uppercase[i]);
+      }
     }
-  }
-  if (lowercaseQUestion === true) {
-    for (var j = 0; j < lowercase.length; j++) {
-      selectedChars.push(lowercase[j]);
+    if (lowercaseQUestion === true) {
+      for (var j = 0; j < lowercase.length; j++) {
+        selectedChars.push(lowercase[j]);
+      }
     }
-  }
-  if (numberQUestion === true) {
-    for (var t = 0; t < numbers.length; t++) {
-      selectedChars.push(numbers[t]);
+    if (numberQUestion === true) {
+      for (var t = 0; t < numbers.length; t++) {
+        selectedChars.push(numbers[t]);
+      }
     }
-  }
-  if (specialQUestion === true) {
-    for (var b = 0; b < specialChar.length; b++) {
-      selectedChars.push(specialChar[b]);
+    if (specialQUestion === true) {
+      for (var b = 0; b < specialChar.length; b++) {
+        selectedChars.push(specialChar[b]);
+      }
     }
+    var finalResult = [];
+    for (var p = 0; p < numberOfChar; p++) {
+      finalResult.push(
+        selectedChars[Math.floor(Math.random() * selectedChars.length)]
+      );
+    }
+    console.log(finalResult);
+    return finalResult.join("");
   }
-  var finalResult = [];
-  for (var p = 0; p < numberOfChar; p++) {
-    finalResult.push(
-      selectedChars[Math.floor(Math.random() * selectedChars.length)]
-    );
-  }
-  console.log(finalResult);
 }
 
 // Add event listener to generate button
